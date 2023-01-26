@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import TaskList from "./TaskList";
 
 const Home = () => {
 
@@ -13,12 +14,7 @@ const Home = () => {
        
        <div className="home">
           
-            {tasks.map((task) => (
-                <div className="task-preview" key={task.id}> 
-                <h2>{ task.title }</h2>
-                <p>{ task.author }</p>
-                </div>
-            ))}
+            <TaskList tasks={tasks} title={'All Tasks'} />
         
         </div>
      );
