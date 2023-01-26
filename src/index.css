@@ -38,3 +38,18 @@
   margin: 40px auto;
   padding: 20px;
 }
+
+/* blog previews / list */
+.task-preview {
+  padding: 10px 16px;
+  margin: 5px 0;
+  border-bottom: 1px solid #fafafa;
+}
+.task-preview:hover {
+  box-shadow: 1px 3px 5px rgba(0,0,0,0.1);
+}
+.task-preview h2 {
+  font-size: 20px;
+  color: #358af1;
+  margin-bottom: 5px;
+}

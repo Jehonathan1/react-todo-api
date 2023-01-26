@@ -3,23 +3,23 @@ import { useState } from "react";
 
 const Home = () => {
 
-    let [task, setTask ] = useState('eat');
-    let [date, setDate ] = useState(254);
-
-    const handleClick = (name, e) => {
-           console.log(`Hi there ${name}!`, e.target) 
-           setTask('Sleep') 
-           setDate(56)   
-    }
+    let [tasks, setTasks ] = useState([
+        { title: 'Make coffee', author: 'John', created_at: 'today', id:1},
+        { title: 'Change address', author: 'Bill', created_at: 'today', id:2},
+        { title: 'Build slideshow', author: 'Nancy', created_at: 'today', id:3}
+    ]);
 
     return ( 
-        <div className="home">
-            
-            <h2>Homepage</h2>
-            <p>{ task } is { date } years overdue!</p>
-
-            <button onClick={(e) => handleClick('John',e)}>Click me again!</button> 
-
+       
+       <div className="home">
+          
+            {tasks.map((task) => (
+                <div className="task-preview" key={task.id}> 
+                <h2>{ task.title }</h2>
+                <p>{ task.author }</p>
+                </div>
+            ))}
+        
         </div>
      );
 }
