@@ -1,30 +1,32 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TaskList from "./TaskList";
 
 const Home = () => {
 
-    let [tasks, setTasks ] = useState([
-        { title: 'Make coffee', author: 'John', completed: true, id:1},
-        { title: 'Change address', author: 'Bill', completed: false, id:2},
-        { title: 'Build slideshow', author: 'Nancy', completed: true, id:3}
-    ]);
+    let [tasks, setTasks ] = useState(null);
 
-    // Delete tasks function
-    // create a new filtered task list and set it as the new list
-    // new list containd all tasks other than selected id 
-    const handleDelete = (id) => { 
-        const newTasks = tasks.filter(task => task.id !== id);
-        setTasks(newTasks);
-    }
+    // fetch data on first render using useEffect
+    const fetchData = async () => {
+        try {
+          const res = await fetch('https://api.npoint.io/31c03301cf7db1410ee6');
+          const data = await res.json();
+          setTasks(data); // update the task list
+        } catch (error) {
+          console.error(error);
+        }
+      };
+      
+      useEffect(() => {
+        fetchData();
+      }, []);
+
     return ( 
        
        <div className="home">
-          
-            <TaskList tasks={tasks} title="All Tasks" handleDelete={handleDelete} />
-            <TaskList tasks={tasks.filter((task) => task.completed === true)} title=" Completed Tasks" handleDelete={handleDelete} />
-            <TaskList tasks={tasks.filter((task) => task.completed === false)} title=" Uncompleted Tasks" handleDelete={handleDelete} />
-        
+            {/* conditional rendering: wait until tasks arrive */}
+            {tasks && <TaskList tasks={tasks} title="All Tasks" /> }
+         
         </div>
      );
 }

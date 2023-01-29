@@ -1,4 +1,4 @@
-const TaskList = ({tasks, title, handleDelete}) => { // destructure 'tasks' props 
+const TaskList = ({tasks, title}) => { // destructure 'tasks' props 
     return ( 
         <div className="task-list">
            
@@ -10,7 +10,7 @@ const TaskList = ({tasks, title, handleDelete}) => { // destructure 'tasks' prop
                 <div className="task-preview" key={task.id}> 
                     <h2>{ task.title }</h2>
                     <p>{ task.author }</p>
-                    <button onClick={() => handleDelete(task.id)}>delete task</button>
+                    
                 </div>
             ))}
         </div>
