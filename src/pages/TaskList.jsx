@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const TaskList = ({tasks, title}) => { // destructure 'tasks' props 
     return ( 
         <div className="task-list">
@@ -7,9 +9,11 @@ const TaskList = ({tasks, title}) => { // destructure 'tasks' props
             )}
 
             {tasks.map((task) => (
-                <div className="task-preview" key={task.id}> 
-                    <h2>{ task.title }</h2>
-                    <p>{ task.author }</p>
+                <div className="task-preview" key={task.id}>
+                    <Link to={`/tasks/${task.id}`}>
+                        <h2>{ task.title }</h2>
+                        <p>{ task.author }</p>
+                    </Link> 
                     
                 </div>
             ))}
