@@ -5,7 +5,7 @@ import Create from './pages/Create'
 import TaskDetails from './pages/TaskDetails'
 
 function App() {
- 
+
   return (
     <Router>
       <div className="App">

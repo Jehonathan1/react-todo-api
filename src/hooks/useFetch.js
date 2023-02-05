@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 
-const useFetch = (url) => {
+const useFetch = (url, id) => {
 
     
     let [isLoading, setIsLoading ] = useState(true); // present loading message while fetching data
@@ -16,16 +16,18 @@ const useFetch = (url) => {
         const controller = new AbortController();
         const signal = controller.signal;
         try {
-            // setTimeout(async () => {
+            
             const res = await fetch(url, { signal }); // fetch data
+            
             if(!res.ok){ // if endpoint is faulty:
-            throw new Error('invalid endpoint!')
+                throw new Error('invalid endpoint!')
             }
+
             const data = await res.json(); // convert to JSON format
             setData(data); // update the data list
             setIsLoading(false); // update loading status to 'false' 
             setError(null); // update error status 'null'  
-        // }, 2000)
+
         } catch (error) { // in case of errors:
             if(error.name === 'AbortError'){
                 console.log('fetch aborted')
@@ -39,7 +41,7 @@ const useFetch = (url) => {
     };
     
     useEffect(() => { // fetch data on initial render
-        fetchData('https://api.npoint.io/31c03301cf7db1410ee6');
+        fetchData(url);
         return () => {
             setData([]);
         }
