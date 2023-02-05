@@ -1,5 +1,5 @@
-import TaskList from "./TaskList";
-import useFetch from "./useFetch";
+import TaskList from "../pages/TaskList";
+import useFetch from "../hooks/useFetch";
 
 const Home = () => {
 
