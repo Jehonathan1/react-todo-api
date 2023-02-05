@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from "react";
 
-const useFetch = (url, id) => {
+const useFetch = (url) => {
 
     
     let [isLoading, setIsLoading ] = useState(true); // present loading message while fetching data
@@ -42,9 +42,6 @@ const useFetch = (url, id) => {
     
     useEffect(() => { // fetch data on initial render
         fetchData(url);
-        return () => {
-            setData([]);
-        }
         }, [url]);
 
         return { data, isLoading, error }
