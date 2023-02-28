@@ -48,7 +48,7 @@ const TaskDetails = () => {
 
    
       
-        navigate("/tasks");
+        navigate("/");
       };
   
     return ( 
