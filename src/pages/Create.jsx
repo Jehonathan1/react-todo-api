@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Create = () => {
+
+    const navigate = useNavigate();
     const [title, setTitle] = useState(''); // state for the task title
     const [body, setBody] = useState(''); // state for the task body
     const [isPending, setIsPending] = useState(false); // state to toggle the loading spinner
@@ -18,7 +21,7 @@ const Create = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const newTask = {title, body, author:'mr. me', completed: false,  id: Date.now()}
+        const newTask = {title, body, author:'You', completed: false,  id: Date.now()}
 
         setIsPending(true); // change button text
 
@@ -27,7 +30,11 @@ const Create = () => {
             method: 'POST',
             headers: { "Content-Type": "application/json"},
             body: JSON.stringify([newTask, ...tasks])
+            // body: JSON.stringify([])
         });
+
+            // Navigate back to the homepage
+            navigate("/tasks");
 
         setIsPending(false); // re-activate button
 
@@ -63,8 +70,8 @@ const Create = () => {
             { isPending && <button disabled>Loading...</button>}
 
             {/* display the task title and body */}
-            <h4>{ title }</h4>
-            <p>{ body }</p>
+            {/* <h4>{ title }</h4> */}
+            {/* <p>{ body }</p> */}
             </form>
         </div>
      );

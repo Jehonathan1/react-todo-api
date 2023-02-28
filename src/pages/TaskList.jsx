@@ -11,7 +11,7 @@ const TaskList = ({tasks, title}) => {
             )}
 
             {/* Map over the 'tasks' and display a preview for each */}
-            {tasks.map((task) => (
+            {tasks.length !==0 && (tasks.map((task) => (
                 <div className="task-preview" key={task.id}>
                     {/* Link to task details and pass task data in state */}
                     <Link to={`/tasks/${task.id}`} state={task}>
@@ -19,7 +19,7 @@ const TaskList = ({tasks, title}) => {
                         <p>{ task.author }</p>
                     </Link> 
                 </div>
-            ))}
+            )))}
         </div>
      );
 }
