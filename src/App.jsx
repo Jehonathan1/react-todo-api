@@ -15,7 +15,7 @@ function App() {
           {/* Routes for different pages */}
           <Routes>
             {/* Home page */}
-            <Route path='/tasks' element={<Home />} />
+            <Route path='/' element={<Home />} />
             {/* Page to create new task */}
             <Route path='/create' element={<Create />} />
             {/* Task detail page */}
