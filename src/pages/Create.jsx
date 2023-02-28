@@ -21,7 +21,7 @@ const Create = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const newTask = {title, body, author:'You', completed: false,  id: Date.now()}
+        const newTask = {title, body, author:'Created by: guest', completed: false,  id: Date.now()}
 
         setIsPending(true); // change button text
 
