@@ -34,7 +34,7 @@ const Create = () => {
         });
 
             // Navigate back to the homepage
-            navigate("/tasks");
+            navigate("/");
 
         setIsPending(false); // re-activate button
 
